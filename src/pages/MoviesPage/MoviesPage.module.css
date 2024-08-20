@@ -15,6 +15,15 @@
   border: none;
   border-radius: 5px;
   background-color: #00ffff;
-  padding: 20px;
+  padding: 10px;
   font-size: 18px;
+}
+.input {
+  padding: 10px;
+  font-size: 18px;
+  width: 500px;
+}
+.form {
+  display: flex;
+  gap: 20px;
 }

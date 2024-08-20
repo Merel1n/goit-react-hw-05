@@ -1,9 +1,3 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
 .nav {
   display: flex;
   gap: 4px;
@@ -19,5 +13,5 @@
 }
 
 .active {
-  color: orange;
+  color: #4fa94d;
 }
