@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(null);
   const [loader, setLoader] = useState(false);
   useEffect(() => {
     try {
