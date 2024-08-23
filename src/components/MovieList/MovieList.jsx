@@ -8,7 +8,7 @@ const MovieList = ({ movies, statusLoader }) => {
       <ul className={css.list}>
         {movies.map(({ id, title, poster_path }) => (
           <li key={id} className={css.item}>
-            <Link to={`/movie/:${id}`}>
+            <Link to={`/movies/:${id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                 alt={title}

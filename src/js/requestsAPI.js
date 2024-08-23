@@ -1,12 +1,3 @@
-// const options = { method: "GET", headers: { accept: "application/json" } };
-
-// fetch("https://api.themoviedb.org/3/movie/movie_id?language=en-US", options)
-//   .then((response) => response.json())
-//   .then((response) => console.log(response))
-//   .catch((err) => console.error(err));
-// ===============================================================================================
-// const options = { method: "GET", headers: { accept: "application/json" } };
-
 // fetch(
 //   "https://api.themoviedb.org/3/movie/movie_id/credits?language=en-US",
 //   options
@@ -59,7 +50,19 @@ export const searchMovies = async (query) => {
 };
 
 export const getMoviesById = async (movieId) => {
-  const response = await axios.get(`/movie/${movieId}`, options);
+  const { data } = await axios.get(`/movie/${movieId}`, options);
 
-  return response;
+  return data;
+};
+
+export const getCastList = async (movieId) => {
+  const { data } = await axios.get(`/movie/${movieId}/credits`, options);
+
+  return data;
+};
+
+export const getReviewsList = async (movieId) => {
+  const { data } = await axios.get(`/movie/${movieId}/reviews`, options);
+  console.log("data", data.results);
+  return data.results;
 };
