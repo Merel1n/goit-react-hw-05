@@ -3,10 +3,11 @@ import Loader from "../Loader/Loader";
 import { useParams } from "react-router-dom";
 import { getReviewsList } from "../../js/requestsAPI";
 import Reviews from "../Reviews/Reviews";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 const MovieReviews = () => {
-  const moviesId = useParams();
-  const movieId = moviesId.movieId.slice(1);
+  const movieId = useParams();
+
   const [loader, setLoader] = useState(false);
   const [reviewsList, setReviewsList] = useState([]);
 
@@ -14,7 +15,7 @@ const MovieReviews = () => {
     const handleSubmit = async () => {
       try {
         setLoader(true);
-        const movieReviews = await getReviewsList(movieId);
+        const movieReviews = await getReviewsList(movieId.movieId);
         setReviewsList(movieReviews);
       } catch (error) {
         console.log(error);
@@ -28,7 +29,11 @@ const MovieReviews = () => {
   return (
     <>
       <Loader status={loader} />
-      <Reviews reviewsList={reviewsList} />
+      {reviewsList > 0 ? (
+        <Reviews reviewsList={reviewsList} />
+      ) : (
+        <NotFoundPage />
+      )}
     </>
   );
 };

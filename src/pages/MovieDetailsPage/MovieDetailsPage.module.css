@@ -17,3 +17,11 @@
 .active {
   color: #4fa94d;
 }
+.button {
+  border: none;
+  border-radius: 5px;
+  background-color: #00ffff;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 50px;
+}

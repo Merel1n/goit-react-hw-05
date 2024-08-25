@@ -1,21 +1,3 @@
-// fetch(
-//   "https://api.themoviedb.org/3/movie/movie_id/credits?language=en-US",
-//   options
-// )
-//   .then((response) => response.json())
-//   .then((response) => console.log(response))
-//   .catch((err) => console.error(err));
-// ==============================================================================================
-// const options = { method: "GET", headers: { accept: "application/json" } };
-
-// fetch(
-//   "https://api.themoviedb.org/3/movie/movie_id/reviews?language=en-US&page=1",
-//   options
-// )
-//   .then((response) => response.json())
-//   .then((response) => console.log(response))
-//   .catch((err) => console.error(err));
-// ==============================================================================================
 import axios from "axios";
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
@@ -63,6 +45,5 @@ export const getCastList = async (movieId) => {
 
 export const getReviewsList = async (movieId) => {
   const { data } = await axios.get(`/movie/${movieId}/reviews`, options);
-  console.log("data", data.results);
   return data.results;
 };

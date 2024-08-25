@@ -1,21 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMoviesById } from "../../js/requestsAPI";
-import { useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import MovieCard from "../../components/MovieCard/MovieCard";
-import GoBack from "../../components/GoBack/GoBack";
+import css from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
-  const moviesId = useParams();
-  const movieId = moviesId.movieId.slice(1);
+  const movieId = useParams();
+
   const [movie, setMovie] = useState(null);
   const [loader, setLoader] = useState(false);
+  const location = useLocation();
+
+  const backLinkRef = useRef(location.state?.from ?? "/movies");
 
   useEffect(() => {
     const fetchMovie = async () => {
       try {
         setLoader(true);
-        const data = await getMoviesById(movieId);
+        const data = await getMoviesById(movieId.movieId);
         setMovie(data);
       } catch (error) {
         console.log(error);
@@ -30,7 +33,12 @@ const MovieDetailsPage = () => {
   return (
     <>
       <Loader status={loader} />
-      {!loader && <GoBack />}
+
+      {!loader && (
+        <Link to={backLinkRef.current} className={css.button}>
+          Go Back
+        </Link>
+      )}
       {isMovie && <MovieCard movie={movie} />}
     </>
   );

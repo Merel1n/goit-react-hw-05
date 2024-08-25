@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import css from "./MovieCard.module.css";
 import { Suspense } from "react";
 import clsx from "clsx";
+
 const MovieCard = ({
   movie: {
     backdrop_path,
